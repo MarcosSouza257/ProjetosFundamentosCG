@@ -31,19 +31,6 @@ int main()
 	// Inicialização da GLFW
 	glfwInit();
 
-	//Muita atenção aqui: alguns ambientes não aceitam essas configurações
-	//Você deve adaptar para a versão do OpenGL suportada por sua placa
-	//Sugestão: comente essas linhas de código para desobrir a versão e
-	//depois atualize (por exemplo: 4.5 com 4 e 5)
-	/*glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, 4);
-	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, 6);
-	glfwWindowHint(GLFW_OPENGL_PROFILE, GLFW_OPENGL_CORE_PROFILE);*/
-
-	//Essencial para computadores da Apple
-//#ifdef __APPLE__
-//	glfwWindowHint(GLFW_OPENGL_FORWARD_COMPAT, GL_TRUE);
-//#endif
-
 	// Criação da janela GLFW
 	GLFWwindow* window = glfwCreateWindow(WIDTH, HEIGHT, "Ola Triangulo! -- Marcos Roberto Souza", nullptr, nullptr);
 	glfwMakeContextCurrent(window);
@@ -102,7 +89,7 @@ int main()
 
 		// Chamada de desenho - drawcall
 		// Poligono Preenchido - GL_TRIANGLES
-		glDrawArrays(GL_TRIANGLES, 0, 3);
+		glDrawArrays(GL_TRIANGLES, 0, 6);
 
 		glBindVertexArray(0); //Desconectando o buffer de geometria
 
@@ -137,11 +124,13 @@ int setupGeometry()
 	// Cada atributo do vértice (coordenada, cores, coordenadas de textura, normal, etc)
 	// Pode ser arazenado em um VBO único ou em VBOs separados
 	GLfloat vertices[] = {
-		//x   y     z
-		-0.5, -0.5, 0.0, //v0
-		 0.5, -0.5, 0.0, //v1
- 		 0.0,  0.5, 0.0, //v2 
+		-0.9, -0.30, 0.0,
+		-0.3, -0.30, 0.0,
+		-0.6, 0.30, 0.0,
 
+		0.9, -0.30, 0.0,
+		0.3, -0.30, 0.0,
+		0.6, 0.30, 0.0,
 	};
 
 	GLuint VBO, VAO;
