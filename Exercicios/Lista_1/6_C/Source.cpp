@@ -131,17 +131,15 @@ int setupGeometry()
 	// sequencial, já visando mandar para o VBO (Vertex Buffer Objects)
 	// Cada atributo do vértice (coordenada, cores, coordenadas de textura, normal, etc)
 	// Pode ser arazenado em um VBO único ou em VBOs separados
-	GLfloat vertices[(numberOfPoints + 2) * 3] = {}; // +2 para adicionar o centro e a boca do Pac-Man
+	GLfloat vertices[(numberOfPoints + 2) * 3] = {};
 	float angle = 0.0;
 	float deltaAngle = 2 * pi / (float)(numberOfPoints - 2);
 	float radius = 0.5;
 
-	// Adiciona o centro do Pac-Man
 	vertices[0] = 0.0;
 	vertices[1] = 0.0;
 	vertices[2] = 0.0;
 
-	// Calcula os vértices do corpo do Pac-Man
 	for (int i = 3; i < numberOfPoints * 3; i += 3) {
 		vertices[i] = radius * cos(angle);
 		vertices[i + 1] = radius * sin(angle);
@@ -149,18 +147,10 @@ int setupGeometry()
 		angle += deltaAngle;
 	}
 
-	// Define a boca do Pac-Man
-	vertices[numberOfPoints * 3] = radius * cos(-pi / 6); // Adiciona uma abertura de 60 graus na boca do Pac-Man
+	vertices[numberOfPoints * 3] = radius * cos(-pi / 6);
 	vertices[numberOfPoints * 3 + 1] = radius * sin(-pi / 6);
 	vertices[numberOfPoints * 3 + 2] = 0.0;
 
-	// Define a posição do olho
-	float eyeRadius = radius * 0.1; // Define o raio do olho como 10% do raio do corpo do Pac-Man
-	float eyeOffsetX = radius * 0.4; // Define o deslocamento horizontal do olho em relação ao centro do Pac-Man
-	float eyeOffsetY = radius * 0.2; // Define o deslocamento vertical do olho em relação ao centro do Pac-Man
-	vertices[(numberOfPoints + 1) * 3] = eyeOffsetX; // Adiciona a coordenada x do olho
-	vertices[(numberOfPoints + 1) * 3 + 1] = eyeOffsetY; // Adiciona a coordenada y do olho
-	vertices[(numberOfPoints + 1) * 3 + 2] = 0.0; // Adiciona a coordenada z do olho
 
 
 	GLuint VBO, VAO;
