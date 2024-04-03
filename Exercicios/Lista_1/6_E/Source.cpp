@@ -124,12 +124,8 @@ void key_callback(GLFWwindow* window, int key, int scancode, int action, int mod
 // A função retorna o identificador do VAO
 int setupGeometry()
 {
-	// Aqui setamos as coordenadas x, y e z do triângulo e as armazenamos de forma
-	// sequencial, já visando mandar para o VBO (Vertex Buffer Objects)
-	// Cada atributo do vértice (coordenada, cores, coordenadas de textura, normal, etc)
-	// Pode ser arazenado em um VBO único ou em VBOs separados
 	GLfloat vertices[numberOfPoints * 3] = {};
-	float angle = 0.0;
+	float angle = 180.0;
 	float deltaAngle = 2 * pi / (float)(numberOfPoints - 2);
 	float radius = 0.5;
 
